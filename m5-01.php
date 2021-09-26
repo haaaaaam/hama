@@ -35,7 +35,7 @@
     $user = 'ユーザー名';
     $password = 'パスワード';
     $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-    //テーブルを作る(m4-2)
+    //テーブルを作る
     $sql = "CREATE TABLE IF NOT EXISTS tbtest"
     ." ("
     . "id INT AUTO_INCREMENT PRIMARY KEY,"
@@ -45,7 +45,7 @@
     $stmt = $pdo->query($sql);
     
     $date = date("Y/m/d H:i:s");
-    //データを登録(m4-5)
+    //データを登録
     if(!empty($_POST["name"]) && !empty($_POST["str"])){
         $sql = $pdo -> prepare("INSERT INTO tbtest (name, comment) VALUES (:name, :comment)");
         $sql -> bindParam(':name', $name, PDO::PARAM_STR);
